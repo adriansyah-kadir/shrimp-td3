@@ -39,13 +39,20 @@
   const lastAction = $derived(actions.at(-1) ?? placeholder);
 
   async function stateFetch(): Promise<State[]> {
-    return fetch(PUBLIC_BACKEND_URL + "/states").then((r) => r.json());
+    return fetch(PUBLIC_BACKEND_URL + "/states", {
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
+    }).then((r) => r.json());
   }
 
   async function actionFetch(states: State[]): Promise<Action[]> {
     return fetch(PUBLIC_BACKEND_URL + "/actions", {
       method: "POST",
       body: JSON.stringify(states),
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
     }).then((r) => r.json());
   }
 
