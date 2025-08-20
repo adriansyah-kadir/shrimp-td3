@@ -86,7 +86,7 @@
   </div>
 </section>
 
-<section>
+<section id="charts">
   <ChartStates
     {error}
     {loading}
@@ -96,6 +96,6 @@
   <ChartActions {loading} actions={actions.length ? actions : [placeholder]} />
 </section>
 
-<footer class="bg-[#1E2532] dark text-foreground p-10">
+<footer id="contacts" class="bg-[#1E2532] dark text-foreground p-10">
   <p>Copyright (c) 2025 Author. All Rights Reserved.</p>
 </footer>
