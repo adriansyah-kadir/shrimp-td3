@@ -73,7 +73,7 @@
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-gray-500 rounded"></div>
-            <span class="text-sm">Pembuangan Air - Ganti air</span>
+            <span class="text-sm">Zat Asam/Basa - Ganti air</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-green-500 rounded"></div>

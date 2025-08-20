@@ -68,15 +68,15 @@
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-red-500 rounded"></div>
-            <span class="text-sm">Suhu (°C) - Ideal: 28-30°C</span>
+            <span class="text-sm">Suhu (°C) - Ideal: 28°C</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-blue-500 rounded"></div>
-            <span class="text-sm">Salinitas (ppt) - Ideal: 15-25</span>
+            <span class="text-sm">Salinitas (ppt) - Ideal: 26</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-cyan-500 rounded"></div>
-            <span class="text-sm">Turbidity (NTU) - Ideal: &lt;30</span>
+            <span class="text-sm">Turbidity (NTU) - Ideal: 28</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-gray-500 rounded"></div>
