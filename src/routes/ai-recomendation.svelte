@@ -31,7 +31,7 @@
       else return "Matikan Aerator";
     },
     nh3: (v: number) => {
-      if (v > 0) return "Drain/Refill Air";
+      if (v > 0) return "Tambah Beban Organik";
       else return "Aerasi/Nitrifikasi";
     },
   };
