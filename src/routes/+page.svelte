@@ -76,6 +76,8 @@
   }
 
   onMount(update);
+
+  $inspect(actions);
 </script>
 
 <section class="border-b px-3 py-1 bg-[#1E2532] dark text-foreground">

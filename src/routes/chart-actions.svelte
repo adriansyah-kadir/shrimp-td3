@@ -9,7 +9,7 @@
     loading?: boolean;
   } = $props();
 
-  const values = $derived(actions.map((e, i) => ({ ...e, i })));
+  const values = $derived(actions.map((e, i) => ({ i, ...e })));
 
   let chart: CustomChart | undefined = $state();
   let colors: string[] = $state([]);

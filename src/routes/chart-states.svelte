@@ -24,12 +24,19 @@
 <div class="card card-border bg-base-100">
   <div class="card-body">
     <div class="flex items-center justify-between">
-      <h2 class="card-title">
-        {#if loading}
-          <span class="loading loading-spinner"></span>
-        {/if}
-        Parameter Kualitas Air
-      </h2>
+      <div>
+        <h2 class="card-title">
+          {#if loading}
+            <span class="loading loading-spinner"></span>
+          {/if}
+          Parameter Kualitas Air
+        </h2>
+        <span class="text-muted-foreground text-sm"
+          >{new Date(values[0]["timestamp"]).toLocaleString("id")} ~ {new Date(
+            values.at(-1)!["timestamp"],
+          ).toLocaleString("id")}</span
+        >
+      </div>
       {#if chart}
         <div class="flex flex-wrap gap-5">
           {#each chart.keys as key, i}
@@ -84,7 +91,7 @@
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-green-500 rounded"></div>
-            <span class="text-sm">Oksigen (mg/L) - Ideal: &gt;5</span>
+            <span class="text-sm">Oksigen (mg/L) - Ideal: 5</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-4 h-4 bg-yellow-500 rounded"></div>
