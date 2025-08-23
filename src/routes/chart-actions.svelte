@@ -1,15 +1,9 @@
 <script lang="ts">
+  import states from "$lib/stores/states";
   import CustomChart from "./custom-chart.svelte";
 
-  const {
-    actions,
-    loading,
-  }: {
-    actions: Record<string, any>[];
-    loading?: boolean;
-  } = $props();
-
-  const values = $derived(actions.map((e, i) => ({ i, ...e })));
+  const values = $derived($states.actions.map((e, i) => ({ i, ...e })));
+  const loading = $derived(values.length < 1);
 
   let chart: CustomChart | undefined = $state();
   let colors: string[] = $state([]);
@@ -28,9 +22,9 @@
         {/if}
         Rekomendasi Aksi
       </h2>
-      {#if chart}
+      {#if chart && values.length}
         <div class="flex flex-wrap gap-5">
-          {#each chart.keys as key, i}
+          {#each ["temp", "sal", "turb", "pH", "DO", "nh3"] as key, i}
             {@const value = values.at(-1)![
               key as keyof (typeof values)[0]
             ] as number}

@@ -27,13 +27,18 @@
     yDomain?: number[];
   } = $props();
 
-  export const keys = Object.keys(values.at(0)!)
-    .slice(1)
-    .filter((e) => e != x) as (keyof Data)[];
-  export const series = keys.map((e, i) => ({
-    key: e,
-    color: colors[i % colors.length],
-  }));
+  const keys = $derived(
+    Object.keys(values.at(0) ?? {})
+      .slice(1)
+      .filter((e) => e != x) as (keyof Data)[],
+  );
+
+  const series = $derived(
+    keys.map((e, i) => ({
+      key: e,
+      color: colors[i % colors.length],
+    })),
+  );
 </script>
 
 <ChartContainer config={{}} class="aspect-auto h-[250px] w-full">

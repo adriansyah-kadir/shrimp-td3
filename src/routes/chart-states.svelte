@@ -1,17 +1,9 @@
 <script lang="ts">
+  import states from "$lib/stores/states";
   import CustomChart from "./custom-chart.svelte";
 
-  const {
-    states,
-    loading,
-    error,
-  }: {
-    states: Record<string, any>[];
-    loading?: boolean;
-    error?: boolean;
-  } = $props();
-
-  const values = $derived(states.map((e, i) => ({ ...e, i })));
+  const values = $derived($states.states.map((e, i) => ({ ...e, i })));
+  const loading = $derived(values.length < 1);
 
   let chart: CustomChart | undefined = $state();
   let colors: string[] = $state([]);
@@ -31,15 +23,17 @@
           {/if}
           Parameter Kualitas Air
         </h2>
-        <span class="text-muted-foreground text-sm"
-          >{new Date(values[0]["timestamp"]).toLocaleString("id")} ~ {new Date(
-            values.at(-1)!["timestamp"],
-          ).toLocaleString("id")}</span
-        >
+        {#if !loading}
+          <span class="text-muted-foreground text-sm"
+            >{new Date(values[0]["timestamp"]).toLocaleString("id")} ~ {new Date(
+              values.at(-1)!["timestamp"],
+            ).toLocaleString("id")}</span
+          >
+        {/if}
       </div>
-      {#if chart}
+      {#if chart && values.length}
         <div class="flex flex-wrap gap-5">
-          {#each chart.keys as key, i}
+          {#each ["temp", "sal", "turb", "pH", "DO", "nh3"] as key, i}
             {@const value = values.at(-1)![
               key as keyof (typeof values)[0]
             ] as number}
@@ -66,7 +60,13 @@
         bind:this={chart}
         {values}
         x="i"
-        label={(i) => new Date(values[i]["timestamp"]).toLocaleTimeString("id")}
+        label={(i) => {
+          const timestamp = values[i]?.["timestamp"];
+          if (timestamp) {
+            return new Date().toLocaleTimeString("id");
+          }
+          return i;
+        }}
       />
     </div>
     <div class="flex flex-col gap-6">
